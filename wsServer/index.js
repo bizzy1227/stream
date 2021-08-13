@@ -6,6 +6,19 @@ httpServer.listen(1337, () => {
   console.log('Server listening at port 1337');
 });
 
+const express = require('express')
+const app = express()
+app.use(express.static('../client'));
+const port = 1400
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+
 const wsServer = new server({
   httpServer,
 });
