@@ -17,7 +17,7 @@
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
       showChatRoom();
 
-      const signaling = new WebSocket('ws://138.68.69.213:1337');
+      const signaling = new WebSocket('ws://127.0.0.1:1337');
       const peerConnection = createPeerConnection(signaling);
 
       addMessageHandler(signaling, peerConnection);
