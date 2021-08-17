@@ -1,0 +1,142 @@
+#social {
+	display: flex;
+	justify-content: flex-end;
+	height: 20px;
+	position: absolute;
+	top: 17px;
+	left: 240px;
+	right: 22px;
+	flex-wrap: wrap;
+	overflow: hidden;
+}
+
+#social>div {
+	margin-left: 10px;
+}
+
+#social-button-mr {
+	width: 126px;
+}
+
+#social-button-vk {
+	width: 146px;
+}
+
+main article {
+	margin-bottom: 3.2em;
+}
+
+main article h1 {
+	color: #315990;
+	font-size: 48px;
+	line-height: 1.29;
+	text-align: right;
+	font-weight: bold;
+	margin-bottom: 1.7em;
+}
+
+main article h2 {
+	color: #315990;
+	font-size: 30px;
+	line-height: 1.3;
+	font-weight: bold;
+	font-weight: bold;
+	margin-bottom: 0.8em;	
+}
+
+main article p {
+	margin-bottom: 1.5em;
+}
+
+main article p:last-of-type {
+	margin-bottom: 0;
+}
+
+main article:first-of-type {
+	font-size: 24px;
+	line-height: 1.29;
+	margin-top: 10px;
+}
+
+main article.with-img,
+main article:last-of-type {
+	display: flex;
+}
+
+main article.with-img > div:first-of-type,
+main article:last-of-type > div:first-of-type {
+	flex: 0 1 30%;
+	position: relative;
+}
+
+main article.with-img > div:last-of-type,
+main article:last-of-type > div:last-of-type {
+	flex: 0 1 70%;
+}
+
+main article.with-img img,
+main article:last-of-type img {
+	position: absolute;
+	width: 100%;
+	height: 80%;
+	bottom: 0;
+}
+
+main article:last-of-type img {
+	height: 100%;
+	bottom: auto;
+}
+
+main article.img-right {
+	flex-direction: row-reverse;
+}
+
+main article:last-of-type {
+	font-size: 24px;
+	line-height: 1.29;
+	flex-direction: row-reverse;
+	min-height: 316px;
+	margin-bottom: 0;
+}
+
+main article:last-of-type > div:first-of-type,
+main article:last-of-type > div:last-of-type {
+	flex: 0 1 50%;
+}
+
+main article:last-of-type > div:last-of-type {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 889.98px) {
+	main article.img-left > div:last-of-type {
+		margin-left: 22px;
+	}
+	
+	main article.img-right > div:last-of-type {
+		margin-right: 22px;
+	}	
+}
+
+@media (max-width: 749.98px) {
+	main article.with-img > div:first-of-type,
+	main article:last-of-type > div:first-of-type {
+		display: none;
+	}
+	
+	main article.with-img > div:last-of-type,
+	main article:last-of-type > div:last-of-type {
+		flex: 0 1 100%;
+		margin: 0;
+	}
+	
+	main article h1 {
+		text-align: center;
+	}
+	
+	main article:last-of-type {
+		min-height: auto;
+	}
+}

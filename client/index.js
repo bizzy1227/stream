@@ -21,16 +21,22 @@
     }
   });
 
-  document.addEventListener('click', async (event) => {
-    if (event.target.id === 'start-button' && code) {
+  // document.addEventListener('click', async (event) => {
+  //   if (event.target.id === 'start-button' && code) {
+  //     startChat();
+  //   }
+  // });
+
+  $(document).ready(function() {
+    $("#start-button").click(function() {
       startChat();
-    }
+    });
   });
 
   const startChat = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-      showChatRoom();
+      // showChatRoom();
 
       const signaling = new WebSocket('ws://127.0.0.1:1337');
       const peerConnection = createPeerConnection(signaling);
@@ -65,6 +71,8 @@
 
     peerConnection.ontrack = (event) => {
       const video = document.getElementById('remote-view');
+      console.log('video', video);
+      
       if (!video.srcObject) {
         video.srcObject = event.streams[0];
       }
