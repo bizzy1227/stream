@@ -1,31 +1,12 @@
 (function () {
   "use strict";
 
-  let code;
+  let code = 111111111;
 
   const MESSAGE_TYPE = {
     SDP: 'SDP',
     CANDIDATE: 'CANDIDATE',
   }
-
-  document.addEventListener('input', async (event) => {
-    if (event.target.id === 'code-input') {
-      const { value } = event.target;
-      if (value.length > 8) {
-        document.getElementById('start-button').disabled = false;
-        code = value;
-      } else {
-        document.getElementById('start-button').disabled = true;
-        code = null;
-      }
-    }
-  });
-
-  // document.addEventListener('click', async (event) => {
-  //   if (event.target.id === 'start-button' && code) {
-  //     startChat();
-  //   }
-  // });
 
   $(document).ready(function() {
     $("#start-button").click(function() {
@@ -36,7 +17,6 @@
   const startChat = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-      // showChatRoom();
 
       const signaling = new WebSocket('ws://127.0.0.1:1337');
       const peerConnection = createPeerConnection(signaling);
@@ -131,10 +111,5 @@
       message_type: MESSAGE_TYPE.SDP,
       content: offer,
     });
-  };
-
-  const showChatRoom = () => {
-    document.getElementById('start').style.display = 'none';
-    document.getElementById('chat-room').style.display = 'block';
   };
 })();
