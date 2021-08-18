@@ -9,7 +9,7 @@
   }
 
   $(document).ready(function() {
-    $("#start-button").click(function() {
+    $('#start-button').click(function() {
       startChat();
     });
   });
@@ -26,7 +26,7 @@
       stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
       document.getElementById('self-view').srcObject = stream;
 
-      $("#stop-button").click(function() {
+      $('#stop-button').click(function() {
         stopChat(signaling, peerConnection);
       });
 
