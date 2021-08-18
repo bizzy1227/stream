@@ -27,7 +27,7 @@
       document.getElementById('self-view').srcObject = stream;
 
       $("#stop-button").click(function() {
-        stopChat(signaling, stream, peerConnection);
+        stopChat(signaling, peerConnection);
       });
 
     } catch (err) {
@@ -35,7 +35,7 @@
     }
   };
 
-  const stopChat = async (signaling, stream, peerConnection) => {
+  const stopChat = async (signaling, peerConnection) => {
     try {
       console.log('stop chat');
       signaling.close();
@@ -72,7 +72,7 @@
     };
 
     peerConnection.onclose = function () {
-      console.log("datachannel close");
+      console.log('datachannel close');
     };
     
     return peerConnection;
