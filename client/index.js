@@ -26,6 +26,20 @@
       stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
       document.getElementById('self-view').srcObject = stream;
 
+      $("#stop-button").click(function() {
+        stopChat(signaling, stream, peerConnection);
+      });
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const stopChat = async (signaling, stream, peerConnection) => {
+    try {
+      console.log('stop chat');
+      signaling.close();
+      peerConnection.close();
     } catch (err) {
       console.error(err);
     }
@@ -51,11 +65,14 @@
 
     peerConnection.ontrack = (event) => {
       const video = document.getElementById('remote-view');
-      console.log('video', video);
       
       if (!video.srcObject) {
         video.srcObject = event.streams[0];
       }
+    };
+
+    peerConnection.onclose = function () {
+      console.log("datachannel close");
     };
     
     return peerConnection;
