@@ -1,21 +1,346 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>VideoChat</title>
-        <script src="index.js"></script>
-        <link rel="stylesheet" href="styles.css" />
-    </head>
-    <body>
-        <div id="chat-room" style="display: none;">
-            <div id="videos">
-                <video id="self-view" autoplay></video>
-                <video id="remote-view" autoplay></video>
+<head>
+    <title>plus-fifty</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link href="css/chatruletka.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<header>
+    <!-- <a href="/" title="чат рулетка" target="_blank"><img src="images/videochatru.svg" alt="чат рулетка" title="чат рулетка" width="208" height="36" /></a> -->
+</header>
+<div id="app">
+    <div id="roulette" class="vertical" style="display: block;">
+        <div class="roulette-box">
+            <div class="video-container full-width" id="video-container" style="height: 520.5px;">
+                <div class="video-container__wrapper">
+                    <div id="remote-video-wrapper" class="video-container__remote-video s-stop" style="width: 591px;">
+                        <div class="wrap-not-found-users-message">
+                            <p class="not-found-users-message">Нет доступных собеседников, ожидаем</p>
+                        </div>
+                        <video poster="" style="display: block;" id="remote-view" class="video-container__video" autoplay=""
+                               playsinline=""></video>
+                    </div>
+                    <div id="local-video-wrapper" class="video-container__local-video" style="width: 591px;">
+                        <video id="self-view" class="video-container__video video-container-local-video" autoplay=""
+                               playsinline=""></video>
+                    </div>
+                </div>
+                <div class="bResizer" id="videoResizer">
+                    <div class="resizer__icon vertical"></div>
+                </div>
+            </div>
+            <div class="chat-container" style="height: 173.5px;">
+                <div class="buttons" style="width: 591px; font-size: 23.24px;">
+                    <div class="buttons__wrapper">
+                        <div id="start-button" class="buttons__button start-button">
+                            <div class="btn btn-main">
+                                <div class="btn__bg"><span class="tr" data-tr-id="1232" data-tr="start">старт</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="next-button" style="display: none;" class="buttons__button start-button">
+                            <div class="btn btn-main">
+                                <div class="btn__bg"><span class="tr" data-tr-id="1232" data-tr="start">Далее</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="stop-button" class="buttons__button stop-button disabled">
+                            <div class="btn btn-red">
+                                <div class="btn__bg"><span class="tr" data-tr-id="1234" data-tr="stop">стоп</span></div>
+                            </div>
+                        </div>
+                        <div class="buttons__button country-filter">
+                            <div id="country-filter-button" class="btn btn-gray country-filter__button">
+                                <div class="btn__bg">
+                                    <span class="tr" data-tr-id="1287" data-tr="country">страна: <span class="country">UA</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="country-filter-popup" id="country-filter-popup" style="max-width: 1942px; top: 16.875px; left: auto; transform-origin: 587.062px 0px 0px;">
+                            <div class="country-filter-popup__all-countries">
+                               <div class="country-filter-popup__country all tr" data-country="ZZ" data-tr-id="1243" data-tr="all_countries">Все страны</div>
+                            </div>
+                            <div class="country-filter-popup__countries" id="country-filter-list">
+                               <div class="country-filter-popup__country " data-country="AU">
+                                  <i class="flag flags-AU"></i>
+                                  <span class="tr" data-tr="AU">Австралия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="AT">
+                                  <i class="flag flags-AT"></i>
+                                  <span class="tr" data-tr="AT">Австрия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="AL">
+                                  <i class="flag flags-AL"></i>
+                                  <span class="tr" data-tr="AL">Албания</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="AR">
+                                  <i class="flag flags-AR"></i>
+                                  <span class="tr" data-tr="AR">Аргентина</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="AM">
+                                  <i class="flag flags-AM"></i>
+                                  <span class="tr" data-tr="AM">Армения</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="BY">
+                                  <i class="flag flags-BY"></i>
+                                  <span class="tr" data-tr="BY">Беларусь</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="BE">
+                                  <i class="flag flags-BE"></i>
+                                  <span class="tr" data-tr="BE">Бельгия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="BG">
+                                  <i class="flag flags-BG"></i>
+                                  <span class="tr" data-tr="BG">Болгария</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="BR">
+                                  <i class="flag flags-BR"></i>
+                                  <span class="tr" data-tr="BR">Бразилия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="GB">
+                                  <i class="flag flags-GB"></i>
+                                  <span class="tr" data-tr="GB">Великобритания</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="HU">
+                                  <i class="flag flags-HU"></i>
+                                  <span class="tr" data-tr="HU">Венгрия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="VE">
+                                  <i class="flag flags-VE"></i>
+                                  <span class="tr" data-tr="VE">Венесуэла</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="DE">
+                                  <i class="flag flags-DE"></i>
+                                  <span class="tr" data-tr="DE">Германия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="GR">
+                                  <i class="flag flags-GR"></i>
+                                  <span class="tr" data-tr="GR">Греция</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="DK">
+                                  <i class="flag flags-DK"></i>
+                                  <span class="tr" data-tr="DK">Дания</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="IL">
+                                  <i class="flag flags-IL"></i>
+                                  <span class="tr" data-tr="IL">Израиль</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="IN">
+                                  <i class="flag flags-IN"></i>
+                                  <span class="tr" data-tr="IN">Индия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="ID">
+                                  <i class="flag flags-ID"></i>
+                                  <span class="tr" data-tr="ID">Индонезия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="IE">
+                                  <i class="flag flags-IE"></i>
+                                  <span class="tr" data-tr="IE">Ирландия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="ES">
+                                  <i class="flag flags-ES"></i>
+                                  <span class="tr" data-tr="ES">Испания</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="IT">
+                                  <i class="flag flags-IT"></i>
+                                  <span class="tr" data-tr="IT">Италия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="KZ">
+                                  <i class="flag flags-KZ"></i>
+                                  <span class="tr" data-tr="KZ">Казахстан</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="CA">
+                                  <i class="flag flags-CA"></i>
+                                  <span class="tr" data-tr="CA">Канада</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="CN">
+                                  <i class="flag flags-CN"></i>
+                                  <span class="tr" data-tr="CN">Китай</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="CO">
+                                  <i class="flag flags-CO"></i>
+                                  <span class="tr" data-tr="CO">Колумбия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="LV">
+                                  <i class="flag flags-LV"></i>
+                                  <span class="tr" data-tr="LV">Латвия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="LT">
+                                  <i class="flag flags-LT"></i>
+                                  <span class="tr" data-tr="LT">Литва</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="LU">
+                                  <i class="flag flags-LU"></i>
+                                  <span class="tr" data-tr="LU">Люксембург</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="MK">
+                                  <i class="flag flags-MK"></i>
+                                  <span class="tr" data-tr="MK">Македония</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="MY">
+                                  <i class="flag flags-MY"></i>
+                                  <span class="tr" data-tr="MY">Малайзия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="MX">
+                                  <i class="flag flags-MX"></i>
+                                  <span class="tr" data-tr="MX">Мексика</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="MD">
+                                  <i class="flag flags-MD"></i>
+                                  <span class="tr" data-tr="MD">Молдова</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="NL">
+                                  <i class="flag flags-NL"></i>
+                                  <span class="tr" data-tr="NL">Нидерланды</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="NZ">
+                                  <i class="flag flags-NZ"></i>
+                                  <span class="tr" data-tr="NZ">Новая Зеландия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="NO">
+                                  <i class="flag flags-NO"></i>
+                                  <span class="tr" data-tr="NO">Норвегия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="PE">
+                                  <i class="flag flags-PE"></i>
+                                  <span class="tr" data-tr="PE">Перу</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="PL">
+                                  <i class="flag flags-PL"></i>
+                                  <span class="tr" data-tr="PL">Польша</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="PT">
+                                  <i class="flag flags-PT"></i>
+                                  <span class="tr" data-tr="PT">Португалия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="KR">
+                                  <i class="flag flags-KR"></i>
+                                  <span class="tr" data-tr="KR">Республика Корея</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="RU">
+                                  <i class="flag flags-RU"></i>
+                                  <span class="tr" data-tr="RU">Россия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="RO">
+                                  <i class="flag flags-RO"></i>
+                                  <span class="tr" data-tr="RO">Румыния</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="RS">
+                                  <i class="flag flags-RS"></i>
+                                  <span class="tr" data-tr="RS">Сербия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="SK">
+                                  <i class="flag flags-SK"></i>
+                                  <span class="tr" data-tr="SK">Словакия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="SI">
+                                  <i class="flag flags-SI"></i>
+                                  <span class="tr" data-tr="SI">Словения</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="US">
+                                  <i class="flag flags-US"></i>
+                                  <span class="tr" data-tr="US">США</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="TH">
+                                  <i class="flag flags-TH"></i>
+                                  <span class="tr" data-tr="TH">Таиланд</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="TW">
+                                  <i class="flag flags-TW"></i>
+                                  <span class="tr" data-tr="TW">Тайвань</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="TR">
+                                  <i class="flag flags-TR"></i>
+                                  <span class="tr" data-tr="TR">Турция</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="UA">
+                                  <i class="flag flags-UA"></i>
+                                  <span class="tr" data-tr="UA">Украина</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="PH">
+                                  <i class="flag flags-PH"></i>
+                                  <span class="tr" data-tr="PH">Филиппины</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="FI">
+                                  <i class="flag flags-FI"></i>
+                                  <span class="tr" data-tr="FI">Финляндия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="FR">
+                                  <i class="flag flags-FR"></i>
+                                  <span class="tr" data-tr="FR">Франция</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="HR">
+                                  <i class="flag flags-HR"></i>
+                                  <span class="tr" data-tr="HR">Хорватия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="CZ">
+                                  <i class="flag flags-CZ"></i>
+                                  <span class="tr" data-tr="CZ">Чехия</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="CL">
+                                  <i class="flag flags-CL"></i>
+                                  <span class="tr" data-tr="CL">Чили</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="CH">
+                                  <i class="flag flags-CH"></i>
+                                  <span class="tr" data-tr="CH">Швейцария</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="SE">
+                                  <i class="flag flags-SE"></i>
+                                  <span class="tr" data-tr="SE">Швеция</span>
+                               </div>
+                               <div class="country-filter-popup__country selected" data-country="EE">
+                                  <i class="flag flags-EE"></i>
+                                  <span class="tr" data-tr="EE">Эстония</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="ZA">
+                                  <i class="flag flags-ZA"></i>
+                                  <span class="tr" data-tr="ZA">ЮАР</span>
+                               </div>
+                               <div class="country-filter-popup__country " data-country="JP">
+                                  <i class="flag flags-JP"></i>
+                                  <span class="tr" data-tr="JP">Япония</span>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="buttons__button">
+                            <div class="gender-selector">
+                               <div class="gender-selector__button">
+                                  <div class="btn btn-gray gender-selector-button">
+                                     <div class="btn__bg"><span class="tr" data-tr-id="1314" data-tr="your_gender">Ваш пол</span><span>:&nbsp;</span><span class="selected-value"><img class="emojione man" alt="👨" id="man" title=":man:" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f468.svg?v=2.2.7"></span></div>
+                                  </div>
+                               </div>
+                               <div class="gender-selector__popup">
+                                  <div class="gender-selector__popup-item selected" data-value="0">
+                                     <img class="emojione" id="man" alt="👨" title=":man:" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f468.svg?v=2.2.7">
+                                     <span class="tr" data-tr-id="1315" data-tr="male">Мужской</span>
+                                  </div>
+                                  <div class="gender-selector__popup-item" data-value="1">
+                                     <img class="emojione" id="woman" alt="👩" title=":woman:" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f469.svg?v=2.2.7">
+                                     <span class="tr" data-tr-id="1316" data-tr="female">Женский</span>
+                                  </div>
+                                  <div class="gender-selector__popup-item" data-value="2">
+                                     <img class="emojione" id="couple" alt="👫" title=":couple:" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f46b.svg?v=2.2.7">
+                                     <span class="tr" data-tr-id="1317" data-tr="couple">Пара</span>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="start">
-            <input id="code-input" placeholder="Enter your code" />
-            <button id="start-button" disabled>Start Video Chat</button>
-        </div>
-    </body>
+    </div>
+</div>
+</body>
+
 </html>

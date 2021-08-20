@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1366 220" preserveAspectRatio="none">
+<g id="Layer_1_1_">
+	
+		<linearGradient id="Path_73_1_" gradientUnits="userSpaceOnUse" x1="132.4336" y1="520.8599" x2="132.3786" y2="523.0309" gradientTransform="matrix(1366 0 0 -194.465 -180180 101596.6719)">
+		<stop  offset="0.023" style="stop-color:#C4D6E6"/>
+		<stop  offset="0.111" style="stop-color:#CAD4E2"/>
+		<stop  offset="0.231" style="stop-color:#DBD0D9"/>
+		<stop  offset="0.351" style="stop-color:#F4CACD"/>
+	</linearGradient>
+	<path id="Path_73" style="fill-rule:evenodd;clip-rule:evenodd;fill:url(#Path_73_1_);" d="M1366,194.465
+		c-160.411-78.581-339.832-117.872-538.263-117.872C478.464,76.593,375.783,233.976,0,150.735V0h1366V194.465z"/>
+	
+		<linearGradient id="Path_74_1_" gradientUnits="userSpaceOnUse" x1="131.9026" y1="521.7689" x2="132.9026" y2="521.7689" gradientTransform="matrix(1366 0 0 -175.0334 -180179 91414.5234)">
+		<stop  offset="0" style="stop-color:#C4D6E6"/>
+		<stop  offset="0.023" style="stop-color:#C4D6E6"/>
+		<stop  offset="0.147" style="stop-color:#BDD0E2"/>
+		<stop  offset="0.316" style="stop-color:#ACC2D9"/>
+		<stop  offset="0.51" style="stop-color:#90AACA"/>
+		<stop  offset="0.721" style="stop-color:#688AB5"/>
+		<stop  offset="0.889" style="stop-color:#184076"/>
+		<stop  offset="1" style="stop-color:#184076"/>
+	</linearGradient>
+	<path id="Path_74" style="fill-rule:evenodd;clip-rule:evenodd;fill:url(#Path_74_1_);" d="M1366,77.292
+		c-140.636-22.773-254.64-12.84-355.581,11.106c-60.566-7.971-121.594-11.913-182.682-11.8C478.464,76.598,375.783,233.981,0,150.74
+		V0h1366V77.292z"/>
+	<g id="Group_1" transform="translate(0 736)">
+		
+			<linearGradient id="a_1_" gradientUnits="userSpaceOnUse" x1="132.4034" y1="-213.3768" x2="132.4034" y2="-214.3764" gradientTransform="matrix(1366 0 0 -220.0769 -180180 -47695.3086)">
+			<stop  offset="0" style="stop-color:#C4D6E6"/>
+			<stop  offset="0.699" style="stop-color:#446CA2"/>
+			<stop  offset="1" style="stop-color:#184076"/>
+		</linearGradient>
+		<path id="a" style="fill-rule:evenodd;clip-rule:evenodd;fill:url(#a_1_);" d="M1366-736H0v206.481
+			c91.075,16.972,200.309,17.964,327.7,2.976c293.687-34.554,483.4-227.75,1038.3-132.165V-736z"/>
+	</g>
+</g>
+<g id="Layer_1">
+</g>
+</svg>

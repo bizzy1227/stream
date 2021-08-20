@@ -64,5 +64,9 @@ wsServer.on('request', request => {
       peer.connection.send(message.utf8Data);
     }
   });
+
+  connection.on('close', function(connection) {
+    console.log('connection close');
+  });
 });
 // --------------------- FOR 1 TO 1 WITH CODE
