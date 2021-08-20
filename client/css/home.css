@@ -140,3 +140,16 @@ main article:last-of-type > div:last-of-type {
 		min-height: auto;
 	}
 }
+
+.not-found-users-message {
+	color: white;
+	font-size: 25px;
+}
+
+.wrap-not-found-users-message {
+	display: none;
+	position: absolute;
+	left: 13%;
+	z-index: 10;
+	top: 250px;
+}
